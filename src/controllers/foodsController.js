@@ -1,14 +1,12 @@
 const Food = require('../models/Food');
-let responseSent = false;
+const { up } = require('../seeders');
+//const btn = document.getElementById('#btnEnviar')
+let id=5;
+
 
 const index = (req, res) => {
   const categoria = req.query.categoria
-  //const categoriasValidas = ['Comida', 'Bebida'];
-
-  //let controle = false;
-  //const foods = Food.readAll();
-
-  //res.render('foods/index.njk', { foods });
+ 
 
   if (!categoria) {
     const foods = Food.readAll();
@@ -18,21 +16,63 @@ const index = (req, res) => {
     res.render('foods/index.njk', { foods: alimentosCategorias });
   }
 
-  //switch(categoria){
-   // case 'Comida':
-   // res.render('foods/comida.ejs')
-   // break;
-
-  //  case 'Bebida':
-   //   res.render('foods/bebida.ejs')
-   //   break;
-
-   // default:
-    //  break;
-
-  //}
-
 
 };
+const home =(req, res) =>{
+  res.render('foods/home.ejs');
 
-module.exports = { index };
+}
+const categoria=(req,res) =>{
+res.render('foods/categorias.ejs');
+}
+
+const update = (req,res) =>{
+  res.render('foods/updatelanche.ejs');
+}
+
+
+
+
+const createCategoria =(req,res) =>{
+  const { name, price, categoria } = req.body;
+  if(categoria == 'Comida' || categoria=='Bebida'){
+    id++;
+    Food.create({
+      name,
+      image : '',
+      price,
+      categoria,
+      id: id
+  
+    })
+    
+  res.redirect('/foods/home');
+  console.log("Lanche criado com sucesso!");
+  }else{
+    console.log("Categoria invalida!")
+  }
+  
+ 
+
+}
+const deletaFoods = (req, res) =>{
+  const id = req.params.id;
+  Food.deletaFoods(id); 
+  res.redirect('/foods/home');
+  }
+
+  const updateFoods = (req,res) =>{
+    const id = req.params.id;
+    if(id){
+      const{name, price, categoria} = req.body;
+      Food.UpdateFoods(id, name, price, categoria )
+      res.redirect('/foods/home');
+      
+
+    }else{
+      res.send("Parametros invalidos");
+    }
+    
+  }
+
+module.exports = { index, home, categoria, createCategoria, deletaFoods, updateFoods, update};

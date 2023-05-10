@@ -22,6 +22,18 @@
      <div class="card-header text-center font-weight-bold">
       {{ food.categoria }}
     </div>
+
+
+      <div class="card-header text-center font-weight-bold">
+      {{ food.id }}
+    </div>
+
+    <div class="card-header text-right  font-weight-bold">
+  <a href="/foods/index/{{ food.id }}">Excluir</a>
+  <a href="/foods/atualiza/{{food.id}}">Editar</a>
+</div>
+
+    
   </div>
   {% endfor %}
 </section>

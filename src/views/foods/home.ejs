@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="titulo">
+        <h1>Bem-vindo!</h1>
+        
+    </div>
+    <div class="container">
+        <section>
+           <a href="/foods/index" <button id="btnMenu">Menu</button></a>
+        </section>
+        <section >
+            <a href="/foods/categorias"<button id="btnCategoria">categorias</button></a>
+        </section>
+    </div>
+    <style>
+    body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: min-content 100vh; max-height: auto;
+    background-color: #FFDEAD;
+    
+    }
+.titulo{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+.container{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    height: 60vh;
+    background-color: #DCDCDC;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 30px;
+
+}
+#btnMenu{
+    width: 17vh;
+    padding: 3vh;
+    border-radius: 30px;
+    background-color: #E9967A;
+    border: none;
+    font-size: 2vh;
+    color:#FFDEAD;
+}
+#btnMenu:hover{
+    cursor: pointer;
+    padding: 4vh;
+    width: 17vh;
+    transition: 1s;
+}
+#btnCategoria{
+    width: 15vh;
+    padding: 3vh;
+    border-radius: 30px;
+    background-color: #E9967A;
+    border: none;
+    font-size: 2vh;
+    color:#FFDEAD;
+
+}
+#btnCategoria:hover{
+    cursor: pointer;
+    padding: 4vh;
+    width: 17vh;
+    transition: 1s;
+}
+    </style>
+    
+</body>
+</html>

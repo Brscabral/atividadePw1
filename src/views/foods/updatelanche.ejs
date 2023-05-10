@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Atualizar lanche</title>
+</head>
+<body>
+    <div class="titulo">
+        <h1>Bem-vindo a pagina de categorias!</h1>
+        
+    </div>
+    <div class="container">
+        <h2 class="titulo2">Cadastre seu lanche com a categoria</h2>
+        <form method="POST" action="/foods/atualiza/:id?_method=PUT">
+            <input type="hidden" name="id" value="{{ food.id }}">
+            <label for="name">name:</label>
+            <input type="text" id="name" name="name">
+            <label for="preco" >price:</label>
+            <input type="number" id="price" name="price">
+          
+            <label for="description">categoria:</label>
+            <input id="categoria" name="categoria"></input>
+
+          <section class="btnSection">
+
+              <button type="submit" id="btnAtualizar">Atualizar</button>
+          </section>
+
+            
+            
+          </form>
+          
+    </div>
+
+    <style>
+    body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: min-content 100vh; max-height: auto;
+    background-color: #FFDEAD;
+    }
+    .titulo{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    }
+
+    .container{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 60vh;
+    background-color: #DCDCDC;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 30px;
+
+    }
+   input{
+    display:flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 30px;
+    border: none;
+    justify-content: center;
+   }
+   #btnEnviar{
+    width: 15vh;
+    padding: 1vh;
+    border-radius: 30px;
+    background-color: #E9967A;
+    border: none;
+    font-size: 2vh;
+    color:#FFDEAD;
+    margin: 30px;
+   }
+   .btnSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+   }
+ 
+    </style>
+    
+</body>
+
+</html>

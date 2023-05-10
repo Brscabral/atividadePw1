@@ -6,7 +6,8 @@ function up() {
     name: 'Salada',
     image: '/imgs/salada.jpg',
     price: 15.5,
-    categoria: 'Comida'
+    categoria: 'Comida',
+    id:1
     
   });
 
@@ -14,26 +15,30 @@ function up() {
     name: 'Hambúrguer',
     image: '/imgs/hamburguer.jpg',
     price: 10,
-    categoria: 'Comida'
+    categoria: 'Comida',
+    id:2
   });
 
   Food.create({
     name: 'Sanduíche',
     image: '/imgs/sanduiche.jpg',
     price: 9,
-    categoria: 'Comida'
+    categoria: 'Comida',
+    id:3
   });
   Food.create({
     name: 'Agua',
     image: '/imgs/agua.jpg',
     price: 9,
-    categoria: 'Bebida'
+    categoria: 'Bebida',
+    id:4
   });
   Food.create({
     name: 'Suco',
     image: '/imgs/suco.jpg',
     price: 9,
-    categoria: 'Bebida'
+    categoria: 'Bebida',
+    id:5
   });
 }
 
