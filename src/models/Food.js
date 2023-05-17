@@ -20,10 +20,14 @@ function filtrarCategorias(foods, categoria) {
 function buscarfoods(id){
   return foods.findIndex(food => food.id == id)
 }
+function retornaFoods(id){
+  return foods.find(food => food.id ==id)
+}
 
 function UpdateFoods(id, name, price, categoria){
-  const index = foods.findIndex((food) => food.id === id)
-  if(index >= 0){
+  const index = foods.find((food) => food.id === id)
+  console.log(index.id)
+  if(index!==-1){
 
     foods[index].name = name
     foods[index].price = price
@@ -40,4 +44,4 @@ function deletaFoods(id){
 
 
 
-module.exports = { create, readAll, filtrarCategorias, buscarfoods, deletaFoods, UpdateFoods };
+module.exports = { create, readAll, filtrarCategorias, buscarfoods, deletaFoods, UpdateFoods, retornaFoods };

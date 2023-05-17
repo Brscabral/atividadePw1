@@ -14,7 +14,7 @@
     </div>
     <div class="container">
         <h2 class="titulo2">Cadastre seu lanche com a categoria</h2>
-        <form method="POST" action="/foods/atualiza/:id?_method=PUT">
+        <form method="POST" action={{ "/foods/atualiza/" + food.id }}>
             <input type="hidden" name="id" value="{{ food.id }}">
             <label for="name">name:</label>
             <input type="text" id="name" name="name">

@@ -27,6 +27,9 @@ res.render('foods/categorias.ejs');
 }
 
 const update = (req,res) =>{
+  const id = req.params.id;
+  const Selectfood = Food.retornaFoods(id);
+  res.locals.food = Selectfood;
   res.render('foods/updatelanche.ejs');
 }
 
@@ -63,10 +66,14 @@ const deletaFoods = (req, res) =>{
 
   const updateFoods = (req,res) =>{
     const id = req.params.id;
-    if(id){
-      const{name, price, categoria} = req.body;
-      Food.UpdateFoods(id, name, price, categoria )
-      res.redirect('/foods/home');
+    const { name, price, categoria } = req.body;
+    console.log("parametro: " + id);
+    const index = Food.retornaFoods(id);
+    if(index.id){
+    index.name = name;
+    index.price = price;
+    index.categoria = categoria;
+    res.redirect('/foods/home');
       
 
     }else{

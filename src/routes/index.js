@@ -11,5 +11,5 @@ router.post('/foods/categorias', foodsController.createCategoria);
 //router.get('/foods/index/:id', foodsController.index);
 router.get('/foods/index/:id', foodsController.deletaFoods);
 router.get('/foods/atualiza/:id', foodsController.update);
-router.put('/foods/atualiza/:id', foodsController.updateFoods);
+router.post('/foods/atualiza/:id', foodsController.updateFoods);
 module.exports = router;
