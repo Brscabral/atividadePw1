@@ -1,7 +1,67 @@
 const Food = require('../models/Food');
 const { up } = require('../seeders');
+const bcrypt = require('bcryptjs');
+const LocalStrategy = require('passport-local').Strategy;
 //const btn = document.getElementById('#btnEnviar')
 let id=5;
+
+const users=[{
+  _id: 1,
+  username: "adm",
+  senha: '$2a$06$HT.EmXYUUhNo3UQMl9APmeC0SwoGsx7FtMoAWdzGicZJ4wR1J8alW',
+
+}]
+
+
+
+function Passport(passport){
+
+  function findUser(username){
+  return users.find(item=> item.username === username)
+  }
+  
+  function findUserId(Id){
+    return users.find(item=> item._id === Id)
+    }
+    passport.serializeUser((user, done) =>{
+      done(null, user._id)
+    })
+
+    passport.deserializeUser((Id, done) =>{
+      try{
+        const user = findUserId(Id);
+        done(null, user);
+      }
+      catch(err){
+          console.log(err)
+          return done(err, null)
+      }
+    })
+    passport.use(new LocalStrategy({
+      usernameField: "username",
+      passwordField: "senha"
+    },
+    (username, senha, done)=>{
+      try{
+        const user = findUser(username);
+        if(!user){
+          return done(null, false)
+        }
+
+        const isValid = bcrypt.compareSync(senha, user.senha);
+        if(!isValid){
+          return done(null,false);
+        }else{
+          return done(null, user)
+          console.log(user)
+        }
+      }
+      catch(err){
+        console.log(err);
+        return done(err, false)
+      }
+    }))
+}
 
 
 const index = (req, res) => {
@@ -21,6 +81,9 @@ const index = (req, res) => {
 const home =(req, res) =>{
   res.render('foods/home.ejs');
 
+}
+const loguin = (req,res) =>{
+  res.render('foods/loguin.ejs');
 }
 const categoria=(req,res) =>{
 res.render('foods/categorias.ejs');
@@ -79,7 +142,11 @@ const deletaFoods = (req, res) =>{
     }else{
       res.send("Parametros invalidos");
     }
+
+    
+
+    //const autenticacao()
     
   }
 
-module.exports = { index, home, categoria, createCategoria, deletaFoods, updateFoods, update};
+module.exports = { index, home, categoria, createCategoria, deletaFoods, updateFoods, update, loguin, Passport};
